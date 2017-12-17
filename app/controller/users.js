@@ -36,7 +36,7 @@ class UsersControler extends Controller {
     const payload = ctx.request.body
     payload.password = await bcrypt.hash(payload.password, 10)
     ctx.validate(createRule, payload)
-    const res = await service.users.create(ctx.request.body)
+    const res = await service.users.create(payload)
     ctx.apiSuccess(res, 201)
   }
 

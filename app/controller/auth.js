@@ -7,7 +7,10 @@ class AuthController extends Controller {
       email: { type: 'string' },
       password: { type: 'string' }
     }
-    ctx.validate(bodyRule)
+    const payload = ctx.request.body
+    ctx.validate(bodyRule, service)
+    const user = await service.auth.login(payload)
+    ctx.apiSuccess(user, 200)
   }
 }
 
