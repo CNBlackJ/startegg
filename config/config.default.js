@@ -22,13 +22,29 @@ module.exports = appInfo => {
   }
 
   config.middleware = [
-    'robot'
-  ]  
+    'robot',
+    'apioutput'
+  ]
 
   config.robot = {
     ua: [
       /Baiduspider/i
     ]
+  }
+
+  config.apioutput = {
+    config: {
+      enable: false
+    }
+  }
+
+  config.mongoose = {
+    url: 'mongodb://127.0.0.1/test',
+    options: {}
+  }
+
+  config.security = {
+    csrf: false
   }
 
   return config
